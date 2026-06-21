@@ -1,0 +1,12 @@
+# --- BACKEND (Spring Boot) ---
+backend/target/
+backend/.gradle/
+backend/.idea/
+backend/.settings/
+backend/*.iml
+backend/bin/
+
+# --- FRONTEND (Angular) ---
+frontend/node_modules/
+frontend/.angular/
+frontend/dist/
