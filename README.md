@@ -83,7 +83,6 @@ Este sistema fue desarrollado con el propósito de fortalecer conocimientos en d
 
 ## 📸 Capturas del sistema
 
-Aquí puedes agregar imágenes o GIFs que muestren la interfaz y las principales funcionalidades del sistema.
 
 ```md
 ![Inicio](assets/inicio.png)
