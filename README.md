@@ -78,20 +78,7 @@ Este sistema fue desarrollado con el propósito de fortalecer conocimientos en d
 * 💻 Desarrollo Full Stack.
 * 🗃️ Gestión de bases de datos relacionales.
 * 📐 Organización y mantenimiento de proyectos escalables.
-
----
-
-## 📸 Capturas del sistema
-
-
-```md
-![Inicio](assets/inicio.png)
-
-![Productos](assets/productos.png)
-
-![Ventas](assets/ventas.png)
-```
-
+  
 ---
 
 ## 👨‍💻 Autor
