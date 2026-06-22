@@ -1,0 +1,21 @@
+<main class="login-page">
+  <form class="login-panel" (ngSubmit)="submit()">
+    <p class="brand">Minimarket</p>
+    <h1>Iniciar sesion</h1>
+    <p class="subtitle">Sistema de punto de venta</p>
+    <label>
+      Usuario
+      <input name="username" [(ngModel)]="username" autocomplete="username">
+    </label>
+    <label>
+      Clave
+      <input name="password" [(ngModel)]="password" type="password" autocomplete="current-password">
+    </label>
+    @if (error) {
+      <p class="error">{{ error }}</p>
+    }
+    <button type="submit" [disabled]="loading || !username || !password">
+      {{ loading ? 'Ingresando...' : 'Ingresar' }}
+    </button>
+  </form>
+</main>

@@ -1,0 +1,18 @@
+<aside class="sidebar">
+    <div class="brand">
+        <strong>Minimarket</strong>
+        <span>Gestión POS</span>
+    </div>
+
+
+<nav>
+    @for (item of visibleItems(); track item.route){
+        <a [routerLink]="item.route" routerLinkActive="active">
+            {{item.label}}
+
+        </a>
+    }
+</nav>
+
+<button type="button"(click)="logout()">Cerrar sesión</button>
+</aside>

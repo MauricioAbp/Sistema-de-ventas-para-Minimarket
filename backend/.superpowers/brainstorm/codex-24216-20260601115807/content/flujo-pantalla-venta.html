@@ -1,0 +1,72 @@
+<h2>Pantalla principal de venta</h2>
+<p class="subtitle">Elige el flujo de trabajo para el cajero. Esta pantalla sera el centro del frontend Angular y del modulo de ventas en Spring Boot.</p>
+
+<div class="cards">
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="mockup">
+        <div class="mockup-header">A. POS rapido</div>
+        <div class="mockup-body">
+          <div class="mock-nav">Caja abierta | Cajero | Cliente opcional</div>
+          <div style="display:grid;grid-template-columns:1.2fr .8fr;gap:12px;margin-top:12px">
+            <div>
+              <input class="mock-input" placeholder="Buscar por codigo o nombre">
+              <div class="placeholder">Lista de productos filtrados</div>
+              <div class="placeholder">Stock y precio visibles</div>
+            </div>
+            <div>
+              <div class="placeholder">Carrito de venta</div>
+              <div class="placeholder">Subtotal | IGV | Total</div>
+              <button class="mock-button">Cobrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>POS rapido</h3>
+      <p>Mas practico para minimarket: buscar, agregar, cobrar y descontar stock en pocos pasos.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="mockup">
+        <div class="mockup-header">B. Venta por formulario</div>
+        <div class="mockup-body">
+          <div class="mock-nav">Datos generales | Detalles | Pago</div>
+          <div style="display:grid;grid-template-columns:1fr;gap:10px;margin-top:12px">
+            <div class="placeholder">Formulario de cabecera</div>
+            <div class="placeholder">Tabla editable de detalles</div>
+            <div class="placeholder">Resumen y guardar</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Formulario administrativo</h3>
+      <p>Mas ordenado para registro manual, pero menos agil para un cajero en hora punta.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="mockup">
+        <div class="mockup-header">C. Asistente por pasos</div>
+        <div class="mockup-body">
+          <div class="mock-nav">1 Productos | 2 Pago | 3 Boleta</div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px">
+            <div class="placeholder">Seleccionar</div>
+            <div class="placeholder">Cobrar</div>
+            <div class="placeholder">Emitir</div>
+          </div>
+          <button class="mock-button">Siguiente</button>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Asistente guiado</h3>
+      <p>Reduce errores para usuarios nuevos, aunque agrega mas clics y demora la venta.</p>
+    </div>
+  </div>
+</div>

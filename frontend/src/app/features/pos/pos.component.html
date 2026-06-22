@@ -1,0 +1,160 @@
+<main class="pos-shell">
+  <header class="pos-topbar">
+    <div>
+      <h1>Punto de venta</h1>
+      @if (userLabel) {
+        <p class="meta">{{ userLabel }} @if (idCaja(); as cajaId) { · Caja #{{ cajaId }} }</p>
+      }
+    </div>
+    <button type="button" class="btn-ghost" (click)="logout()">Cerrar sesion</button>
+  </header>
+
+  @if (error()) {
+    <p class="banner banner-error" role="alert">{{ error() }}</p>
+  }
+
+  @if (lastSale(); as sale) {
+  <div class="banner banner-success sale-success" role="status">
+    <span>
+      Venta {{ sale.numeroVenta }} registrada. Total S/ {{ sale.total | number: '1.2-2' }} · Vuelto S/
+      {{ sale.vuelto | number: '1.2-2' }}
+    </span>
+    <a [routerLink]="['/app/ventas/boleta', sale.idBoleta]">Ver boleta</a>
+  </div>
+}
+
+  @if (showOpenCaja()) {
+    <section class="caja-panel">
+      <h2>Abrir caja</h2>
+      <p>Debes abrir una caja antes de registrar ventas.</p>
+      <label>
+        Monto de apertura (S/)
+        <input type="number" min="0" step="0.01" [(ngModel)]="montoApertura" />
+      </label>
+      <button type="button" class="btn-primary" [disabled]="busy()" (click)="openCaja()">
+        {{ busy() ? 'Abriendo...' : 'Abrir caja' }}
+      </button>
+    </section>
+  }
+
+  <div class="pos-grid">
+    <section class="search-panel">
+      <label class="search-label" for="product-search">Buscar producto</label>
+      <input
+        id="product-search"
+        placeholder="Codigo o nombre"
+        [ngModel]="search()"
+        (ngModelChange)="search.set($event)"
+        [disabled]="loading() || showOpenCaja()"
+      />
+
+      @if (loading()) {
+        <div class="state-box">Cargando productos...</div>
+      } @else if (!filteredProducts().length) {
+        <div class="state-box">No hay productos que coincidan con la busqueda.</div>
+      } @else {
+        <ul class="product-list">
+          @for (product of filteredProducts(); track product.id_producto) {
+            <li>
+              <button
+                type="button"
+                class="product-card"
+                [disabled]="showOpenCaja() || product.stock_actual <= 0"
+                (click)="addToCart(product)"
+              >
+                <span class="product-code">{{ product.codigo_producto }}</span>
+                <strong>{{ product.nombre_producto }}</strong>
+                <span class="product-meta">
+                  S/ {{ asNumber(product.precio_venta) | number: '1.2-2' }} · Stock
+                  {{ product.stock_actual }}
+                </span>
+              </button>
+            </li>
+          }
+        </ul>
+      }
+    </section>
+
+    <aside class="cart-panel">
+      <div class="cart-header">
+        <h2>Carrito ({{ itemCount() }})</h2>
+        @if (cart().length) {
+          <button type="button" class="btn-link" (click)="clearCart()">Vaciar</button>
+        }
+      </div>
+
+      @if (!cart().length) {
+        <div class="state-box">Agrega productos para iniciar la venta.</div>
+      } @else {
+        <ul class="cart-lines">
+          @for (line of cart(); track line.product.id_producto) {
+            <li class="cart-line">
+              <div>
+                <strong>{{ line.product.nombre_producto }}</strong>
+                <span>S/ {{ asNumber(line.product.precio_venta) | number: '1.2-2' }} c/u</span>
+              </div>
+              <div class="qty-controls">
+                <button type="button" aria-label="Disminuir" (click)="changeQty(line, -1)">−</button>
+                <span>{{ line.cantidad }}</span>
+                <button type="button" aria-label="Aumentar" (click)="changeQty(line, 1)">+</button>
+              </div>
+              <div class="line-total">
+                <strong>S/ {{ lineSubtotal(line) | number: '1.2-2' }}</strong>
+                <button type="button" class="btn-link danger" (click)="removeLine(line)">Quitar</button>
+              </div>
+            </li>
+          }
+        </ul>
+      }
+
+      <div class="totals">
+        <div><span>Subtotal</span><span>S/ {{ subtotal() | number: '1.2-2' }}</span></div>
+        <div><span>IGV (18%)</span><span>S/ {{ igv() | number: '1.2-2' }}</span></div>
+        <div class="total-row"><span>Total</span><strong>S/ {{ total() | number: '1.2-2' }}</strong></div>
+      </div>
+
+      <button
+        type="button"
+        class="btn-pay"
+        [disabled]="!cart().length || showOpenCaja() || busy()"
+        (click)="openCheckout()"
+      >
+        Cobrar
+      </button>
+    </aside>
+  </div>
+</main>
+
+@if (showCheckout()) {
+  <div class="modal-backdrop" (click)="closeCheckout()">
+    <form class="checkout-modal" (ngSubmit)="confirmSale()" (click)="$event.stopPropagation()">
+      <h2>Confirmar cobro</h2>
+      <p class="checkout-total">Total a pagar: <strong>S/ {{ total() | number: '1.2-2' }}</strong></p>
+
+      <label>
+        Metodo de pago
+        <select [(ngModel)]="metodoPago" name="metodoPago">
+          <option value="EFECTIVO">Efectivo</option>
+          <option value="TARJETA">Tarjeta</option>
+          <option value="YAPE">Yape / Plin</option>
+        </select>
+      </label>
+
+      <label>
+        Monto recibido (S/)
+        <input type="number" min="0" step="0.01" [(ngModel)]="montoRecibido" name="montoRecibido" required />
+      </label>
+
+      @if (montoRecibido >= total()) {
+        <p class="change">Vuelto: S/ {{ montoRecibido - total() | number: '1.2-2' }}</p>
+      }
+
+      <div class="modal-actions">
+        <button type="button" class="btn-ghost" (click)="closeCheckout()">Cancelar</button>
+        <button type="submit" class="btn-pay" [disabled]="busy() || montoRecibido < total()">
+          {{ busy() ? 'Procesando...' : 'Confirmar venta' }}
+        </button>
+      </div>
+    </form>
+  </div>
+}

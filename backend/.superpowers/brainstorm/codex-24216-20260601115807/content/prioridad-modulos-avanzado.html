@@ -1,0 +1,67 @@
+<h2>Prioridad para el alcance avanzado</h2>
+<p class="subtitle">Selecciona el bloque que debe quedar mas fuerte primero. Los demas pueden entrar como segunda fase.</p>
+
+<div class="cards">
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="mockup">
+        <div class="mockup-header">A. Venta, caja e inventario</div>
+        <div class="mockup-body">
+          <div class="mock-nav">POS | Caja | Stock | Kardex</div>
+          <div style="display:grid;grid-template-columns:1.3fr .7fr;gap:12px;margin-top:12px">
+            <div class="placeholder">Registrar venta con detalle</div>
+            <div class="placeholder">Caja abierta</div>
+            <div class="placeholder">Descuento automatico de stock</div>
+            <div class="placeholder">Movimientos</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Nucleo operativo</h3>
+      <p>Ideal si la prioridad es que el minimarket pueda vender, controlar caja y mantener stock correcto.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="mockup">
+        <div class="mockup-header">B. Compras y proveedores</div>
+        <div class="mockup-body">
+          <div class="mock-nav">Proveedores | Ordenes | Recepcion</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
+            <div class="placeholder">Orden de compra</div>
+            <div class="placeholder">Productos por proveedor</div>
+            <div class="placeholder">Recepcion de mercaderia</div>
+            <div class="placeholder">Actualiza stock</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Abastecimiento</h3>
+      <p>Fuerte para demostrar control de entrada de productos y trazabilidad desde proveedor hasta inventario.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="mockup">
+        <div class="mockup-header">C. Seguridad y reportes</div>
+        <div class="mockup-body">
+          <div class="mock-nav">Roles | Auditoria | Dashboard | Exportes</div>
+          <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:12px">
+            <div class="placeholder">Permisos por rol</div>
+            <div class="placeholder">Historial de acciones</div>
+            <div class="placeholder">Ventas por fecha</div>
+            <div class="placeholder">Stock critico</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Gestion avanzada</h3>
+      <p>Da presentacion profesional, control de usuarios y evidencia para administracion del negocio.</p>
+    </div>
+  </div>
+</div>

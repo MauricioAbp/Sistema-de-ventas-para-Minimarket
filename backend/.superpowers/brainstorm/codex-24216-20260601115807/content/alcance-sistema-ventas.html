@@ -1,0 +1,66 @@
+<h2>Alcance del sistema de ventas</h2>
+<p class="subtitle">Elige el nivel que quieres completar primero. Esto define backend, frontend y base de datos sin inflar el proyecto.</p>
+
+<div class="cards">
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="mockup">
+        <div class="mockup-header">A. Venta minima funcional</div>
+        <div class="mockup-body">
+          <div class="mock-nav">Login | Productos | Ventas</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
+            <div class="placeholder">Buscar producto</div>
+            <div class="placeholder">Carrito</div>
+          </div>
+          <button class="mock-button">Registrar venta</button>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Minimo funcional</h3>
+      <p>Login, productos, venta, detalle de venta, descuento de stock y consulta basica.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="mockup">
+        <div class="mockup-header">B. Sistema academico completo</div>
+        <div class="mockup-body">
+          <div class="mock-nav">Dashboard | Caja | Ventas | Inventario | Compras</div>
+          <div style="display:grid;grid-template-columns:1.2fr .8fr;gap:12px;margin-top:12px">
+            <div class="placeholder">Punto de venta</div>
+            <div class="placeholder">Caja abierta</div>
+            <div class="placeholder">Kardex</div>
+            <div class="placeholder">Reportes</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Academico completo</h3>
+      <p>Ventas, caja, inventario, proveedores, compras, recepcion, boleta y reportes basicos.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="mockup">
+        <div class="mockup-header">C. Avanzado</div>
+        <div class="mockup-body">
+          <div class="mock-nav">Roles | Auditoria | Reportes | Facturacion</div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px">
+            <div class="placeholder">Permisos</div>
+            <div class="placeholder">SUNAT</div>
+            <div class="placeholder">Metricas</div>
+          </div>
+          <button class="mock-button">Exportar</button>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Avanzado</h3>
+      <p>Todo lo anterior mas seguridad robusta, auditoria, reportes avanzados e integraciones.</p>
+    </div>
+  </div>
+</div>

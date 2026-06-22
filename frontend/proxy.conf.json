@@ -1,0 +1,52 @@
+{
+  "/usuario": {
+    "target": "http://localhost:8080",
+    "secure": false
+  },
+  "/producto": {
+    "target": "http://localhost:8080",
+    "secure": false
+  },
+  "/categoria": {
+  "target": "http://localhost:8080",
+  "secure": false
+},
+"/reportes":{
+  "target": "http://localhost:8080",
+  "secure":false
+},
+  "/venta": {
+    "target": "http://localhost:8080",
+    "secure": false
+  },
+  "/movimientoinventario": {
+  "target": "http://localhost:8080",
+  "secure": false
+},
+"/empresa": {
+  "target": "http://localhost:8080",
+  "secure": false
+},
+  "/proveedor": {
+  "target": "http://localhost:8080",
+  "secure": false
+},
+
+  "/caja": {
+    "target": "http://localhost:8080",
+    "secure": false
+  },
+  "/proveedor": {
+  "target": "http://localhost:8080",
+  "secure": false
+},
+  "/boleta": {
+    "target": "http://localhost:8080",
+    "secure": false
+  },
+  "/dashboard": {
+  "target": "http://localhost:8080",
+  "secure": false
+}
+  
+}
